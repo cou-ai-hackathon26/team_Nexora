@@ -1,0 +1,33 @@
+{
+  "scope": "PLANNED_SIMULATION_ONLY",
+  "real_drone_flights": 0,
+  "real_photos_captured": 0,
+  "waypoint_visits": 12,
+  "unique_waypoints": 12,
+  "manually_flagged_revisits": 0,
+  "drones": 2,
+  "sorties": 2,
+  "battery_reserve_percent": 20,
+  "user_supplied_gps_center": false,
+  "gps_coordinates_are_simulated": false,
+  "not_real_autonomous_capture": true,
+  "sortie_details": [
+    {
+      "drone": "DRONE-1",
+      "sortie": 1,
+      "waypoints": 6,
+      "planned_distance_m": 352.5,
+      "planned_duration_s": 142.5,
+      "battery_budget_s_including_20pct_reserve": 576.0
+    },
+    {
+      "drone": "DRONE-2",
+      "sortie": 1,
+      "waypoints": 6,
+      "planned_distance_m": 352.5,
+      "planned_duration_s": 142.5,
+      "battery_budget_s_including_20pct_reserve": 576.0
+    }
+  ],
+  "created_at_utc": "2026-11-22T11:02:44+00:00"
+}
