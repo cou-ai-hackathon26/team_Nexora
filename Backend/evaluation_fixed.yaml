@@ -1,0 +1,11 @@
+path: D:\DENGUE_HUNTER\Water Surface Segmentation\Water Surface Segmentation
+train: train/images
+val: valid/images
+test: test/images
+nc: 5
+names:
+- Bottle
+- Coconut-Exocarp
+- Drain-Inlet
+- Tire
+- Vase
