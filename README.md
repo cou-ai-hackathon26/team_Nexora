@@ -1,77 +1,37 @@
-# DENGU HUNTER
-### AI-Powered Breeding Site Detection, Risk Prediction & Verified Mosquito Prevention
+# DENGU HUNTER — Matte Carbon / Electric Violet Frontend
 
-**Team:** Nexora  
-**Hackathon:** COU AI Hackathon 2026
+Vanilla HTML, CSS, and JavaScript frontend. No Node.js, React, or npm required.
 
-## Project Overview
+## Start
 
-DENGU HUNTER is an AI-powered community surveillance platform designed to identify potential mosquito breeding-site objects, prioritize inspection locations, and track cleanup activities through human review and field response.
+1. Start your FastAPI backend in its own terminal:
 
-Our system combines computer vision, citizen reporting, GPS mapping, risk prioritization, and coordinated field operations.
+   `python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000`
 
-## Key Features
+2. Open a **second** terminal in the extracted frontend directory and run:
 
-### 1. AI-Powered Detection
-- YOLO-based object detection.
-- Identifies potential breeding-site objects such as tires, bottles, vases, coconut exocarp, and drain inlets.
-- Detection confidence and inspection recommendations.
+   `python -m http.server 5173 --bind 127.0.0.1`
 
-### 2. Citizen Reporting
-- Photo-based reporting.
-- Voice-based reporting.
-- Optional GPS coordinates.
-- Rain context and previous report information.
+3. Visit `http://127.0.0.1:5173` in your browser.
+4. Go to **Connection & Settings**, paste your backend `.env` `DENGU_API_TOKEN` into the password input, and click **Connect & Load Live Data**.
 
-### 3. Offline-First Reporting
-- Stores reports locally using IndexedDB when internet is unavailable.
-- Automatically synchronizes queued reports when connectivity returns.
-- Supports photo and voice evidence.
+The frontend is served on port **5173** to match the CORS allowlist in the provided FastAPI backend. Opening `index.html` directly as `file://` is not recommended.
 
-### 4. Risk Prioritization
-- Considers detected objects and inspection context.
-- Distinguishes uninspected sites from cleanup-reviewed sites.
-- Includes logic for zero risk after verified cleanup.
+## Included screens
 
-### 5. Admin and Field Worker Workflow
-- Human review and approval.
-- Worker task assignment.
-- Before-and-after photo evidence.
-- Final evidence review and reinspection workflow.
+Dashboard, New Report + YOLO AI, Case Management (search/filter), Case Detail (Overview / AI Detection / Human Review / Worker Task / After Photo / Final Review), Worker Tasks, Human Review, After & Finalize, Analytics, Alerts, Connection & Settings. API actions use the backend's real `/api/v1` routes.
 
-### 6. GPS Surveillance
-- Location-aware incident reporting.
-- Map-based inspection monitoring.
+## Integrity & security
 
-## Technology Stack
+- The token is entered at runtime, kept **only in memory**, and never shipped in this ZIP, localStorage, or URL. Reloading the page requires entering it again.
+- This local prototype exposes a manually entered privileged token to the browser session. **Do not deploy publicly** without server-side authentication / session management and role-based authorization.
+- YOLO object detection is not dengue, larvae, or Aedes confirmation.
+- Priority is a heuristic inspection score, not a disease forecast.
+- Same-site attestation must be truthful; matching images alone do not prove cleanup.
+- Final review is not independent field verification.
+- The existing backend API does not serve before/after photos, so this frontend shows case metadata and locally selected upload previews, not remote evidence thumbnails.
+- Analytics uses actual case counts and descriptive distributions. The chart is explicitly illustrative, not a fabricated historical trend.
 
-- Python
-- YOLO / Ultralytics
-- OpenCV
-- FastAPI
-- HTML, CSS, JavaScript
-- MySQL
-- IndexedDB
-- GPS / Mapping
+## Backend dependencies
 
-## System Workflow
-
-Citizen Report → Photo & Voice Collection → AI Object Detection → Risk Prioritization → Admin Review → Worker Assignment → Cleanup Evidence → Final Human Review
-
-## Challenge Implementation
-
-**Challenge 1: Voice and Photo Citizen Reporting Without Reliable Internet**
-
-Implemented photo and voice reporting, browser-based offline storage, and automatic synchronization when connectivity returns.
-
-**Challenge 2: Risk Prioritization for Cleared and Uninspected Sites**
-
-Implemented inspection-status-aware risk logic and a zero-score condition for verified cleanup. Full end-to-end field-verification testing remains a limitation.
-
-## Important Limitation
-
-YOLO identifies potential water-holding objects. It does not directly detect dengue infection or mosquito species. Final cleanup decisions require human review and appropriate field verification.
-
-## Team
-
-**Nexora — COU AI Hackathon 2026**
+The frontend requires the separate DENGU HUNTER FastAPI backend and its model weights. It does not include those files.
